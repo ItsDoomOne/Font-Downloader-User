@@ -10,8 +10,8 @@ from tqdm import tqdm
 from colorama import Fore, Style, init
 from urllib.parse import urlparse, parse_qs, quote_plus
 
+userpath = os.environ.get('USERPROFILE') # Gets the path to the user folder, like %USERPROFILE% on Batch.
 init(autoreset=True)
-
 
 def elevate_to_admin():
     if sys.platform.startswith("win") and not ctypes.windll.shell32.IsUserAnAdmin():
@@ -20,7 +20,6 @@ def elevate_to_admin():
         params = " ".join([f'"{arg}"' for arg in sys.argv[1:]])
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, f'"{script}" {params}', None, 1)
         sys.exit()
-
 
 def extract_font_name_from_url(font_url):
     parsed = urlparse(font_url)
@@ -31,7 +30,6 @@ def extract_font_name_from_url(font_url):
         return parsed.path.split("/")[-1].replace("+", " ")
     return None
 
-
 def fetch_variants(font_name):
     url = "https://fonts.googleapis.com/css2?family=" + quote_plus(font_name) + "&display=swap"
     r = requests.get(url)
@@ -39,13 +37,11 @@ def fetch_variants(font_name):
         return None
     return re.findall(r"font-style:\s*(normal|italic);.*?font-weight:\s*(\d+);.*?url\((.*?)\)", r.text, re.DOTALL)
 
-
 def create_license(folder):
     r = requests.get("https://fonts.google.com/attribution")
     if r.status_code == 200:
         with open(os.path.join(folder, "LICENSE.txt"), "w", encoding="utf-8") as f:
             f.write(r.text)
-
 
 def install_font_on_windows(font_path):
     dest = os.path.join(os.environ["WINDIR"], "Fonts", os.path.basename(font_path))
@@ -55,13 +51,20 @@ def install_font_on_windows(font_path):
         ctypes.windll.user32.SendMessageW(0xFFFF, 0x001D, 0, 0)
         print(Fore.GREEN + f"✅ Installed: {os.path.basename(font_path)}")
 
+# EXPERIMENTAL!!! I DO NOT HAVE ANY WAY OF TESTING..
+def install_font_on_windows_user(font_path):
+    dest = (userpath + "\AppData\Local\Microsoft\Windows\Fonts")
+    if not os.path.exists(dest):
+        shutil.copy(font_path, dest)
+        ctypes.windll.gdi32.AddFontResourceW(dest)
+        ctypes.windll.user32.SendMessageW(0xFFFF, 0x001D, 0, 0)
+        print(Fore.GREEN + f"✅ Installed: {os.path.basename(font_path)}")
 
 def loading_animation(text, delay=0.1):
     for char in text:
         print(char, end="", flush=True)
         time.sleep(delay)
     print("")
-
 
 def download_font(font_name):
     print(Fore.CYAN + f"\n🔍 Fetching variants for {font_name}...")
@@ -132,5 +135,6 @@ if __name__ == "__main__":
                 download_font(name)
         else:
             download_font(item)
+
 
     print(Fore.GREEN + "\n🎯 All tasks completed! Your fonts are installed. Enjoy! 🚀")
