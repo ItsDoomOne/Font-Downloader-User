@@ -34,24 +34,8 @@ Click the button below to download Font-Downloader:
 🎉 Exciting news! 🎉  
 Font-Downloader now supports the latest Google Fonts collections. Stay up-to-date with the trendiest fonts for your projects!
 
-## Need Help? 🤝
-
-If you encounter any issues with downloading Font-Downloader, please check the "Releases" section on the repository for further assistance. Our team is here to ensure you have a smooth experience with our tool.
-
-## Contribute 🌐
+## Contributing 🌐
 
 We welcome contributions from the open-source community to enhance Font-Downloader. Feel free to fork the repository, make improvements, and submit a pull request. Together, we can make Font-Downloader even better!
-
-## Stay Connected 🌟
-
-Follow us on GitHub to stay updated with the latest releases and features of Font-Downloader. Your feedback and suggestions are invaluable to us as we continue to improve the tool for all users.
-
----
-
-By leveraging the power of Font-Downloader, you can elevate the typography of your projects effortlessly. Say goodbye to font download woes and hello to a seamless experience with Font-Downloader. Get started today and browse through a world of stunning Google Fonts at your fingertips! 🌈
-
-Let Font-Downloader simplify your font selection process and enhance the visual appeal of your projects. Download Font-Downloader now and unlock a world of limitless typographic possibilities! 💻🎨
-
-Happy font downloading with Font-Downloader! 🚀🔠
 
 ---
