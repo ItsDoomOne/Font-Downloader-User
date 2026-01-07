@@ -1,6 +1,7 @@
-# Font-Downloader 🌟
+# Font-Downloader-User 🌟
 
-Font-Downloader is a powerful CLI tool designed to make downloading and installing Google Fonts a breeze. This tool supports bulk downloads, interactive variant selection, auto-installation, and works seamlessly on Windows, Linux, and macOS. Say goodbye to the hassle of manually downloading fonts - Font-Downloader has got you covered!
+Font-Downloader is a powerful CLI tool designed to make downloading and installing Google Fonts a breeze. This tool supports bulk downloads, interactive variant selection, auto-installation, and works seamlessly on Windows, Linux, and macOS. Say goodbye to the hassle of manually downloading fonts - Font-Downloader has got you covered! /
+Only problem is, Font-Downloader (not -User) requires admin permissions (which is needed for installing system-wide fonts). This fork aims to implement a configuration system and a user installation mode, so that Font-Downloader may be used by regular users without admin permissions.
 
 ## Features 🚀
 
